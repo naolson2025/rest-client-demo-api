@@ -1,0 +1,33 @@
+http://localhost:3000/api/health
+
+### sign up
+POST http://localhost:3000/api/auth/sign-up/email
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "test@test.com",
+  "password": "password123456"
+}
+
+### sign in
+POST http://localhost:3000/api/auth/sign-in/email
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password123456"
+}
+
+### Get all books
+GET http://localhost:3000/api/books
+
+### Create a book
+POST http://localhost:3000/api/books
+Content-Type: application/json
+
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "publishedDate": "1925-04-10"
+}
