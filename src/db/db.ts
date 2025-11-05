@@ -1,18 +1,5 @@
+import { drizzle } from 'drizzle-orm/better-sqlite3';
 import Database from 'better-sqlite3';
-import { join } from 'path';
 
-const dbPath = join('.', 'books.sqlite');
-
-let db: Database.Database;
-
-export const dbConn = () => {
-  if (!db) {
-    db = new Database(dbPath);
-
-    applyMigrations(db);
-  }
-
-  return db;
-};
-
-export const applyMigrations = (db: Database.Database) => {};
+const sqlite = new Database('books.sqlite');
+export const db = drizzle({ client: sqlite });
