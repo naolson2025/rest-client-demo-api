@@ -4,6 +4,7 @@ import { auth } from './lib/auth';
 import { bookRoutes } from './routes/books.routes';
 
 const app = new Hono();
+
 app.use('*', logger());
 
 app

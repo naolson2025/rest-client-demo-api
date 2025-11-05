@@ -1,16 +1,18 @@
 http://localhost:3000/api/health
 
 ### sign up
+# @no-cookie-jar
 POST http://localhost:3000/api/auth/sign-up/email
 Content-Type: application/json
 
 {
   "name": "John Doe",
-  "email": "test@test.com",
+  "email": "test123@test.com",
   "password": "password123456"
 }
 
 ### sign in
+# @no-cookie-jar
 POST http://localhost:3000/api/auth/sign-in/email
 Content-Type: application/json
 
