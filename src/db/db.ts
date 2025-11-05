@@ -1,27 +1,18 @@
-import { Database } from 'bun:sqlite';
+import Database from 'better-sqlite3';
 import { join } from 'path';
 
 const dbPath = join('.', 'books.sqlite');
 
-let db: Database;
+let db: Database.Database;
 
 export const dbConn = () => {
   if (!db) {
     db = new Database(dbPath);
-    db.run('PRAGMA journal_mode = WAL;');
 
-    applySchema(db);
+    applyMigrations(db);
   }
 
   return db;
 };
 
-export const applySchema = (dbInstance: Database) => {
-  dbInstance.run(`
-    CREATE TABLE IF NOT EXISTS users (
-      id TEXT PRIMARY KEY,
-      email TEXT UNIQUE NOT NULL,
-      password_hash TEXT NOT NULL
-    );  
-  `);
-};
+export const applyMigrations = (db: Database.Database) => {};
