@@ -1,18 +1,21 @@
 http://localhost:3000/api/health
 
+### Get all books
+GET http://localhost:3000/api/books
+
 ### sign up
-# @no-cookie-jar
+### @no-cookie-jar
 POST http://localhost:3000/api/auth/sign-up/email
 Content-Type: application/json
 
 {
   "name": "John Doe",
-  "email": "test123@test.com",
+  "email": "test@test.com",
   "password": "password123456"
 }
 
 ### sign in
-# @no-cookie-jar
+### @no-cookie-jar
 POST http://localhost:3000/api/auth/sign-in/email
 Content-Type: application/json
 
@@ -20,9 +23,6 @@ Content-Type: application/json
   "email": "test@test.com",
   "password": "password123456"
 }
-
-### Get all books
-GET http://localhost:3000/api/books
 
 ### Create a book
 POST http://localhost:3000/api/books

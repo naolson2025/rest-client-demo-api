@@ -13,12 +13,12 @@ export async function getBooks() {
   return result;
 }
 
-export async function getBookById(id: string) {
+export async function getBookById(id: number) {
   const [result] = await db.select().from(book).where(eq(book.id, id));
   return result;
 }
 
-export async function updateBook(id: string, data: Partial<NewBook>) {
+export async function updateBook(id: number, data: Partial<NewBook>) {
   const result = await db
     .update(book)
     .set(data)
@@ -26,7 +26,12 @@ export async function updateBook(id: string, data: Partial<NewBook>) {
   return result;
 }
 
-export async function deleteBook(id: string) {
+export async function deleteBook(id: number) {
   const result = await db.delete(book).where(eq(book.id, id));
+  return result;
+}
+
+export async function deleteAllBooks() {
+  const result = await db.delete(book);
   return result;
 }
