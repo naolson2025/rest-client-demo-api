@@ -4,7 +4,7 @@ http://localhost:3000/api/health
 GET http://localhost:3000/api/books
 
 ### sign up
-### @no-cookie-jar
+# @no-cookie-jar
 POST http://localhost:3000/api/auth/sign-up/email
 Content-Type: application/json
 
@@ -15,9 +15,10 @@ Content-Type: application/json
 }
 
 ### sign in
-### @no-cookie-jar
+# @no-cookie-jar
 POST http://localhost:3000/api/auth/sign-in/email
 Content-Type: application/json
+Origin: http://localhost:3000
 
 {
   "email": "test@test.com",
