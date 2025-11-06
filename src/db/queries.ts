@@ -4,7 +4,7 @@ import { book } from "./schema";
 import { eq } from 'drizzle-orm';
 
 export async function createBook(data: NewBook) {
-  const result = await db.insert(book).values(data);
+  const [result] = await db.insert(book).values(data).returning();
   return result;
 }
 

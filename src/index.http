@@ -1,32 +1,36 @@
-http://localhost:3000/api/health
+@baseUrl = http://localhost:3000
+@password = password123456
+
+{{baseUrl}}/api/health
 
 ### Get all books
-GET http://localhost:3000/api/books
+GET {{baseUrl}}/api/books
 
 ### sign up
 # @no-cookie-jar
-POST http://localhost:3000/api/auth/sign-up/email
+# @prompt email
+POST {{baseUrl}}/api/auth/sign-up/email
 Content-Type: application/json
 
 {
   "name": "John Doe",
-  "email": "test@test.com",
-  "password": "password123456"
+  "email": "{{email}}",
+  "password": "{{password}}"
 }
 
 ### sign in
 # @no-cookie-jar
-POST http://localhost:3000/api/auth/sign-in/email
+POST {{baseUrl}}/api/auth/sign-in/email
 Content-Type: application/json
 Origin: http://localhost:3000
 
 {
   "email": "test@test.com",
-  "password": "password123456"
+  "password": "{{password}}"
 }
 
 ### Create a book
-POST http://localhost:3000/api/books
+POST {{baseUrl}}/api/books
 Content-Type: application/json
 
 {
@@ -34,3 +38,12 @@ Content-Type: application/json
   "author": "F. Scott Fitzgerald",
   "publishedDate": "1925-04-10"
 }
+
+
+###
+curl --request POST \
+  --url http://localhost:3000/api/auth/sign-in/email \
+  --header 'content-type: application/json' \
+  --header 'origin: http://localhost:3000' \
+  --header 'user-agent: vscode-restclient' \
+  --data '{"email": "test@test.com","password": "password123456"}'
