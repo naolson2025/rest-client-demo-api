@@ -1,35 +1,13 @@
-@baseUrl = http://localhost:3000
-@password = password123456
+# @baseUrl = http://localhost:3000
+@password = password1234
 
 {{baseUrl}}/api/health
 
 ### Get all books
-GET {{baseUrl}}/api/books
-
-### sign up
-# @no-cookie-jar
-# @prompt email
-POST {{baseUrl}}/api/auth/sign-up/email
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "{{email}}",
-  "password": "{{password}}"
-}
-
-### sign in
-# @no-cookie-jar
-POST {{baseUrl}}/api/auth/sign-in/email
-Content-Type: application/json
-Origin: http://localhost:3000
-
-{
-  "email": "test@test.com",
-  "password": "{{password}}"
-}
+{{baseUrl}}/api/books
 
 ### Create a book
+# @no-cookie-jar
 POST {{baseUrl}}/api/books
 Content-Type: application/json
 
@@ -39,11 +17,17 @@ Content-Type: application/json
   "publishedDate": "1925-04-10"
 }
 
+### Create account
+# @no-cookie-jar
+# @prompt email
+POST {{baseUrl}}/api/auth/sign-up/email
+Content-Type: application/json
+
+{
+  "name": "john",
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
 
 ###
-curl --request POST \
-  --url http://localhost:3000/api/auth/sign-in/email \
-  --header 'content-type: application/json' \
-  --header 'origin: http://localhost:3000' \
-  --header 'user-agent: vscode-restclient' \
-  --data '{"email": "test@test.com","password": "password123456"}'
+curl --request GET --url http://localhost:3000/api/health --header 'user-agent: vscode-restclient'
